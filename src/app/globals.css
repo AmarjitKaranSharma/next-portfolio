@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fceffa;
+  --foreground: #171717;
+  --container-background: #fff;
+  --font-poppins: "Poppins";
+  --font-ubuntu: "Ubuntu";
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-container-background: var(--container-background);
+  --font-sans: var(--font-poppins);
+  --font-ubuntu: var(--font-ubuntu);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f0f0f;
+    --foreground: #fff;
+    --container-background: #ffffff1a;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* * {
+  font-family: Poppins, Helvetica, sans-serif;
+} */
