@@ -6,12 +6,18 @@
   --container-background: #fff;
   --font-poppins: "Poppins";
   --font-ubuntu: "Ubuntu";
+  --primary-color: #8028bf;
+  --active-color: #bb5bff;
+  --navbar-height: 9rem;
+  --gap-navbar-content: 28px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-container-background: var(--container-background);
+  --color-primary: var(--primary-color);
+  --color-active: var(--active-color);
   --font-sans: var(--font-poppins);
   --font-ubuntu: var(--font-ubuntu);
 }
@@ -29,6 +35,27 @@ body {
   color: var(--foreground);
 }
 
-/* * {
-  font-family: Poppins, Helvetica, sans-serif;
-} */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) transparent;
+}
+
+/* For Chrome, Edge, Safari */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Adjust width */
+  border-radius: 10px; /* Round scrollbar itself */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px; /* Round the track */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px; /* Round the scrollbar handle */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: darken(var(--primary-color), 10%);
+}
