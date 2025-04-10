@@ -6,8 +6,8 @@ export default async function WorkDetail({
   const { id } = await params;
   console.log(id);
   return (
-    <div>
-      <h3>Project One</h3>
+    <div className="p-6">
+      <h3>Project {id}</h3>
       <p>A brief description of Project One.</p>
     </div>
   );

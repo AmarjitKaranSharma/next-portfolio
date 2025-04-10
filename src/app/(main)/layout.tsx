@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Ubuntu } from "next/font/google";
 import ".././globals.css";
-import NavigationBar from "../components/navbar";
+import NavigationBar from "../../components/navbar";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -28,10 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${ubuntu.variable} antialiased h-screen w-full px-10 py-4 max-w-[1500px] mx-auto`}
+        className={`${poppins.variable} ${ubuntu.variable} antialiased max-h-max w-full px-10 py-4 space-y-[var(--gap-navbar-content)] overflow-x-hidden`}
       >
-        <NavigationBar />
-        <section className="mt-7">{children}</section>
+        <section className="sticky top-5 z-50 max-w-[1200px] mx-auto">
+          <NavigationBar />
+        </section>
+        <section className="max-w-[1200px] mx-auto">{children}</section>
       </body>
     </html>
   );
