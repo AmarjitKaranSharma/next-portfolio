@@ -2,7 +2,7 @@ const About = () => (
   <div>
     <h3>About</h3>
     <p>
-      Hi, I'm a freelance web developer and designer based in India,
+      Hi, {"I'm"} a freelance web developer and designer based in India,
       specializing in modern website development, UI/UX design, and SAAS product
       development. With a strong passion for technology and creativity, I build
       high-performing, visually stunning, and user-friendly digital solutions
@@ -27,9 +27,9 @@ const About = () => (
         ideas into full-fledged digital solutions.{" "}
       </li>
     </ul>
-    <h3>Why Work With Me?</h3>🔹 Custom Solutions – I don’t just build
-    websites; I create tailored digital experiences that align with your brand
-    and business goals. 🔹 Cutting-Edge Technologies – I stay updated with the
+    <h3>Why Work With Me?</h3>🔹 Custom Solutions – I don’t just build websites;
+    I create tailored digital experiences that align with your brand and
+    business goals. 🔹 Cutting-Edge Technologies – I stay updated with the
     latest web trends, ensuring your website is built with modern, scalable, and
     secure tech. 🔹 Attention to Detail – I focus on every aspect, from
     performance to design, ensuring an exceptional user experience. 🔹 On-Time

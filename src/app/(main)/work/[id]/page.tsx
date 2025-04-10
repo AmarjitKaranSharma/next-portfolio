@@ -1,13 +1,7 @@
-export default async function WorkDetail({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const { id } = await params;
-  console.log(id);
+export default function WorkDetail() {
   return (
     <div className="p-6">
-      <h3>Project {id}</h3>
+      <h3>Project</h3>
       <p>A brief description of Project One.</p>
     </div>
   );
