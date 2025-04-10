@@ -49,7 +49,7 @@ export default function NavigationBar() {
           About
         </Link>
       </section>
-      <button onClick={() => setMenuOpen(!menuOpen)}>
+      <button className="sm:hidden" onClick={() => setMenuOpen(!menuOpen)}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
