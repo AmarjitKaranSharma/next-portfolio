@@ -65,55 +65,6 @@ export default function NavigationBar() {
           />
         </svg>
       </button>
-      <section
-        className={`flex items-center gap-8 px-5 sm:hidden flex-col fixed bg-background z-50 h-full w-full transition-transform duration-300 ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <button
-          onClick={() => setMenuOpen(false)}
-          className="absolute top-5 right-5"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-        <Link
-          className={`text-xl font-medium ${
-            activeRoute === "/" ? "text-active" : ""
-          }`}
-          href="/"
-        >
-          Home
-        </Link>
-        <Link
-          className={`text-xl font-medium ${
-            activeRoute.includes("/work") ? "text-active" : ""
-          }`}
-          href="/work/1"
-        >
-          Work
-        </Link>
-        <Link
-          className={`text-xl font-medium ${
-            activeRoute === "/intro" ? "text-active" : ""
-          }`}
-          href="/intro"
-        >
-          About
-        </Link>
-      </section>
     </nav>
   );
 }
