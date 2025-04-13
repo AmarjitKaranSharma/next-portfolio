@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <section className="min-h-full max-h-max w-full">
       <section className="relative w-full h-[calc(100vh-var(--gap-navbar-content)-var(--navbar-height))] sm:h-[calc(100vh-var(--gap-navbar-content)-var(--navbar-height)-16px)] grid place-items-center">
-        <div className="glowing-container w-96 aspect-square absolute bottom-1/2 right-1/2 translate-1/2"></div>
+        <div className="glowing-container aspect-square absolute bottom-1/2 right-1/2 translate-1/2"></div>
         <div className="star -z-10"></div>
         <div className="star -z-10"></div>
         <div className="star -z-10"></div>
