@@ -5,8 +5,7 @@ import Person from "@/person.svg";
 export default function Home() {
   return (
     <section className="min-h-full max-h-max w-full">
-      <section className="relative w-full h-[calc(100vh-var(--gap-navbar-content)-var(--navbar-height))] sm:h-[calc(100vh-var(--gap-navbar-content)-var(--navbar-height)-16px)] grid place-items-center">
-        <div className="glowing-container aspect-square absolute bottom-1/2 right-1/2 translate-1/2"></div>
+      <section className="relative w-full h-[calc(100vh-var(--gap-navbar-content)-var(--navbar-height)-var(--gap-navbar-content)-var(--navbar-height))] grid place-items-center">
         <div className="star -z-10"></div>
         <div className="star -z-10"></div>
         <div className="star -z-10"></div>
@@ -18,18 +17,18 @@ export default function Home() {
         <div className="star -z-10"></div>
         <div className="star -z-10"></div>
 
-        <div className="md:text-8xl text-7xl max-sm:text-5xl font-extrabold w-full max-w-[1000px] text-center tracking-tighter ">
-          Building Scalable Web Experiences, One Line at a Time
+        <div className="relative grid place-items-center w-full max-w-[1000px] text-center">
+          <div className="glowing-container absolute inset-0 w-full h-full"></div>
+          <div className="md:text-8xl text-7xl max-sm:text-5xl font-extrabold tracking-tighter z-10">
+            Building Scalable Web Experiences, One Line at a Time
+          </div>
         </div>
       </section>
 
-      <section
-        id="about"
-        className="w-full h-[calc(100vh-var(--gap-navbar-content)-var(--navbar-height))]"
-      >
+      <section className="w-full h-[calc(100vh-var(--gap-navbar-content)-var(--navbar-height))]">
         <div className="relative text-3xl font-semibold tracking-tighter ">
           <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:justify-center gap-10 items-center justify-between">
-            <h3 className="md:text-7xl text-4xl max-sm:flex-row max-sm:flex-wrap max-sm:justify-center max-sm:gap-2 leading-10 flex flex-col gap-5">
+            <h3 className="md:text-7xl text-4xl max-sm:flex-row max-sm:flex-wrap max-sm:justify-center max-sm:gap-2 flex flex-col gap-5">
               <span className="text-nowrap">{"<Design />"}</span>
               <span className="text-nowrap">{"<Develop />"}</span>
               <span className="text-nowrap">{"<Build />"}</span>

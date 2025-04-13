@@ -67,7 +67,6 @@ body {
   z-index: -1; /* So it stays in the background */
   animation: pulse 4s ease-in-out infinite;
   pointer-events: none;
-  transform: scale(1.5);
 }
 
 @keyframes pulse {
@@ -78,7 +77,7 @@ body {
   }
   50% {
     opacity: 1;
-    transform: scale(1.5);
+    transform: scale(3.5);
   }
 }
 
