@@ -3,11 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/shadecn-lib/ui/dropdown-menu";
+import { Menu } from "lucide-react";
+import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 
 export default function NavigationBar() {
   const activeRoute = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
 
   // Log on initial render and whenever activeRoute changes
   console.log("NavigationBar rendered with pathname:", activeRoute);
@@ -18,7 +24,7 @@ export default function NavigationBar() {
   }, [activeRoute]);
 
   return (
-    <nav className="flex items-center justify-between p-5 backdrop-blur-lg rounded-full bg-container-background">
+    <nav className="flex items-center justify-between h-[var(--navbar-height)] px-5 backdrop-blur-lg rounded-full bg-container-background">
       <section className="flex items-center gap-5">
         <Image src="/avatar.svg" alt="avatar" width={70} height={70} />
         <p className="text-xl">Glad, You are here</p>
@@ -49,22 +55,45 @@ export default function NavigationBar() {
           About
         </Link>
       </section>
-      <button className="sm:hidden" onClick={() => setMenuOpen(!menuOpen)}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 5.25h16.5m-16.5 6h16.5m-16.5 6h16.5"
-          />
-        </svg>
-      </button>
+      <DropdownMenu>
+        <DropdownMenuTrigger>
+          <Menu></Menu>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuItem>
+            <Link
+              className={`text-xl font-medium ${
+                activeRoute === "/" ? "text-active" : ""
+              }`}
+              href="/"
+            >
+              Home
+            </Link>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem>
+            <Link
+              className={`text-xl font-medium ${
+                activeRoute.includes("/work") ? "text-active" : ""
+              }`}
+              href="/work/1"
+            >
+              Work
+            </Link>
+          </DropdownMenuItem>
+
+          <DropdownMenuItem>
+            <Link
+              className={`text-xl font-medium ${
+                activeRoute === "/intro" ? "text-active" : ""
+              }`}
+              href="/intro"
+            >
+              About
+            </Link>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </nav>
   );
 }
