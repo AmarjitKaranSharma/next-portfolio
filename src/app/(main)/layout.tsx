@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${ubuntu.variable} antialiased w-full px-10 py-4 overflow-x-hidden`}
+        className={`${poppins.variable} ${ubuntu.variable} antialiased w-full px-[var(--main-screen-padding-horizontally)] py-[var(--main-screen-padding-vertically)] overflow-x-hidden`}
       >
         <section className="sticky top-5 z-50 max-w-[1200px] mx-auto">
           <NavigationBar />
