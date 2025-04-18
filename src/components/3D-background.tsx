@@ -87,7 +87,7 @@ function FloatingGrid() {
   );
 }
 
-export default function () {
+export default function BackgroundEffect() {
   return (
     <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
       <Suspense fallback={null}>

@@ -53,6 +53,7 @@ export default function NavigationBar() {
       <section className="flex items-center gap-8 px-5 max-sm:hidden">
         {menuItems.map((item) => (
           <Link
+            key={item.label}
             className={`text-xl font-medium ${
               activeRoute == item.route
                 ? "text-active"
@@ -72,7 +73,7 @@ export default function NavigationBar() {
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           {menuItems.map((item) => (
-            <DropdownMenuItem>
+            <DropdownMenuItem key={item.label}>
               <Link
                 onClick={toggleMenu}
                 className={`text-xl font-medium ${
