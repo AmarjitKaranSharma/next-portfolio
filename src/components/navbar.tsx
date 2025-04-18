@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,6 +14,27 @@ import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 
 export default function NavigationBar() {
   const activeRoute = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+  const menuItems = [
+    {
+      label: "Home",
+      route: "/",
+      matchRoute: null,
+    },
+    {
+      label: "Work",
+      route: "/work/1",
+      matchRoute: "work",
+    },
+    {
+      label: "About",
+      route: "/intro",
+      matchRoute: null,
+    },
+  ];
 
   // Log on initial render and whenever activeRoute changes
   console.log("NavigationBar rendered with pathname:", activeRoute);
@@ -30,68 +51,43 @@ export default function NavigationBar() {
         <p className="text-xl">Glad, You are here</p>
       </section>
       <section className="flex items-center gap-8 px-5 max-sm:hidden">
-        <Link
-          className={`text-xl font-medium ${
-            activeRoute === "/" ? "text-active" : ""
-          }`}
-          href="/"
-        >
-          Home
-        </Link>
-        <Link
-          className={`text-xl font-medium ${
-            activeRoute.includes("/work") ? "text-active" : ""
-          }`}
-          href="/work/1"
-        >
-          Work
-        </Link>
-        <Link
-          className={`text-xl font-medium ${
-            activeRoute === "/intro" ? "text-active" : ""
-          }`}
-          href="/intro"
-        >
-          About
-        </Link>
+        {menuItems.map((item) => (
+          <Link
+            className={`text-xl font-medium ${
+              activeRoute == item.route
+                ? "text-active"
+                : activeRoute.includes(item.matchRoute!)
+                ? "text-active"
+                : ""
+            }`}
+            href={item.route}
+          >
+            {item.label}
+          </Link>
+        ))}
       </section>
-      <DropdownMenu>
-        <DropdownMenuTrigger>
+      <DropdownMenu open={menuOpen} onOpenChange={toggleMenu}>
+        <DropdownMenuTrigger className="sm:hidden">
           <Menu></Menu>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>
-            <Link
-              className={`text-xl font-medium ${
-                activeRoute === "/" ? "text-active" : ""
-              }`}
-              href="/"
-            >
-              Home
-            </Link>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem>
-            <Link
-              className={`text-xl font-medium ${
-                activeRoute.includes("/work") ? "text-active" : ""
-              }`}
-              href="/work/1"
-            >
-              Work
-            </Link>
-          </DropdownMenuItem>
-
-          <DropdownMenuItem>
-            <Link
-              className={`text-xl font-medium ${
-                activeRoute === "/intro" ? "text-active" : ""
-              }`}
-              href="/intro"
-            >
-              About
-            </Link>
-          </DropdownMenuItem>
+          {menuItems.map((item) => (
+            <DropdownMenuItem>
+              <Link
+                onClick={toggleMenu}
+                className={`text-xl font-medium ${
+                  activeRoute === item.route
+                    ? "text-active"
+                    : activeRoute.includes(item.matchRoute!)
+                    ? "text-active"
+                    : ""
+                }`}
+                href={item.route}
+              >
+                {item.label}
+              </Link>
+            </DropdownMenuItem>
+          ))}
         </DropdownMenuContent>
       </DropdownMenu>
     </nav>
