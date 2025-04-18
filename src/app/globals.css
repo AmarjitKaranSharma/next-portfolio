@@ -87,6 +87,10 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+body {
+  padding: 0 var(--main-screen-padding-horizontally) !important;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0f0f0f;
