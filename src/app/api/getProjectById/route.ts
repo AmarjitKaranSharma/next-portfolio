@@ -3,6 +3,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
+import { Project } from "@/models/project";
 
 export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
@@ -13,7 +14,9 @@ export async function GET(req: NextRequest) {
   try {
     const data = fs.readFileSync(filePath, "utf-8");
     const projects = JSON.parse(data);
-    const project = projects.find((p: { id: string }) => p["id"] === id);
+    const project: Project = await projects.find(
+      (p: { id: string }) => `${p.id}` === id
+    );
 
     if (!project) {
       return NextResponse.json({ error: "Project not found" }, { status: 404 });
