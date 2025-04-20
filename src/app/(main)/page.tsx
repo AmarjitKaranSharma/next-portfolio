@@ -65,11 +65,37 @@ export default function Home() {
         <div className="relative text-3xl font-semibold tracking-tighter ">
           <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:justify-center gap-10 items-center justify-between">
             <h3 className="md:text-7xl text-5xl justify-center items-center max-sm:gap-2 flex flex-col gap-5">
-              <span className="text-nowrap">{"<Design />"}</span>
-              <span className="text-nowrap">{"<Develop />"}</span>
-              <span className="text-nowrap">{"<Build />"}</span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-nowrap"
+              >
+                {"<Design />"}
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="text-nowrap"
+              >
+                {"<Develop />"}
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-nowrap"
+              >
+                {"<Build />"}
+              </motion.span>
             </h3>
-            <div className="relative grid place-items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative grid place-items-center"
+            >
               <Image
                 loading="lazy"
                 src="/images/techstack.svg"
@@ -79,13 +105,14 @@ export default function Home() {
                 className="w-full aspect-auto"
               />
               <Image
+                loading="lazy"
                 src="/images/person.svg"
                 alt="person"
                 width={0}
                 height={0}
                 className="absolute aspect-auto w-1/2 bottom-0 right-1/2 translate-x-1/2"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -16,7 +16,7 @@ export default function PulsingButton() {
       <Link
         href="#contact"
         className={`relative inline-flex items-center gap-2 px-8 py-4 rounded-full 
-             "bg-purple-600 hover:bg-purple-700 text-white"
+             bg-purple-600 hover:bg-purple-700 text-white
               transition-all duration-300 font-medium text-lg shadow-lg hover:shadow-xl hover:shadow-purple-500/20`}
         aria-label="Get in touch"
       >

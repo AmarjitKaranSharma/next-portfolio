@@ -85,16 +85,16 @@ export default function NavigationBar({
       </section>
       <DropdownMenu open={menuOpen} onOpenChange={toggleMenu}>
         <DropdownMenuTrigger className="sm:hidden">
-          <Menu className="cursor-pointer"></Menu>
+          <Menu className="cursor-pointer focus:border-none"></Menu>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="bg-background border-none p-3 space-y-2">
+        <DropdownMenuContent className="bg-background border-none p-3 space-y-2 w-max">
           {menuItems.map((item) => (
             <DropdownMenuItem key={item.label}>
               <Link
                 onClick={() => {
                   toggleMenu();
                 }}
-                className={`text-xl font-medium ${
+                className={`text-md font-medium ${
                   activeRoute === item.route
                     ? "text-active"
                     : activeRoute.includes(item.matchRoute!)
@@ -107,6 +107,19 @@ export default function NavigationBar({
               </Link>
             </DropdownMenuItem>
           ))}
+          <DropdownMenuItem
+            className="flex gap-5 items-center capitalize text-md font-medium"
+            onClick={() => toggleTheme(theme === "dark" ? "light" : "dark")}
+          >
+            <span>{theme === "dark" ? "light" : "dark"} Mode</span>
+            <span>
+              {theme === "dark" ? (
+                <Sun width={25}></Sun>
+              ) : (
+                <Moon width={25}></Moon>
+              )}
+            </span>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </nav>

@@ -48,7 +48,7 @@ export default function ContactWithMe() {
         >
           <Link
             href="#"
-            className={`flex items-center gap-2 darK:text-gray-300 hover:text-purple-400 transition-colors`}
+            className={`flex items-center gap-2 dark:text-gray-300 hover:text-purple-400 transition-colors`}
             aria-label="Email me"
           >
             <svg
