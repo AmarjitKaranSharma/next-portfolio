@@ -1,58 +1,55 @@
 "use client";
-// import { motion, AnimatePresence } from "framer-motion";
-import { use, useState } from "react";
 
-export default function WorkDetail(props: { params: Promise<{ id: string }> }) {
-  const { id } = use(props.params);
-  const [project, setProject] = useState<{
-    title: string;
-    details: string;
-  } | null>(null);
-  const fetchProjectById = async () => {
-    const response = await fetch(`/api/getProjectById?id=${id}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(response);
-    const data = await response.json();
-    if (data) {
-      setProject(data);
-    }
-  };
-  fetchProjectById();
+import { Project } from "@/models/project";
+import Image from "next/image";
+import { use, useEffect, useState } from "react";
+// import Ojc from "@/projects/ojc-1.jpg";
+
+interface PageProps {
+  params: Promise<{ id: string }>; // <- updated type
+}
+
+export default function WorkDetail({ params }: PageProps) {
+  const { id } = use(params);
+  const [project, setProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    const fetchProjectById = async () => {
+      const response = await fetch(`/api/getProjectById?id=${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log("Project data:", data);
+      if (data) {
+        setProject(data);
+      }
+    };
+    fetchProjectById();
+  }, [id]);
 
   return (
-    // <AnimatePresence>
-    //   <motion.div
-    //     initial={{ opacity: 0, y: 20 }}
-    //     animate={{ opacity: 1, y: 0 }}
-    //     exit={{ opacity: 0, y: -20 }}
-    //     transition={{ duration: 0.4 }}
-    //     className="p-6"
-    //   >
-    //     <h3>Project {id}</h3>
-    //     <p>A brief description of the project.</p>
-    //   </motion.div>
-    // </AnimatePresence>
-    <div className="relative h-full">
-      <div className="relative z-10">
+    <div className="p-6 h-full overflow-y-auto">
+      <div className="relative z-10 h-full">
         <h2 className="text-3xl font-bold text-white mb-4">{project?.title}</h2>
-        <p className="text-gray-300">{project?.details}</p>
+        <p className="text-gray-300">{project?.description}</p>
 
-        {/* Placeholder for project content */}
-        <div className="mt-8 grid grid-cols-2 gap-6">
-          <div className="aspect-video rounded-lg bg-[#1a1a1a] overflow-hidden relative group">
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-              <span className="p-4 text-white text-sm">Project preview</span>
-            </div>
-          </div>
-          <div className="aspect-video rounded-lg bg-[#1a1a1a] overflow-hidden relative group">
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-              <span className="p-4 text-white text-sm">Project details</span>
-            </div>
-          </div>
+        <div className="mt-8 grid  gap-6">
+          {project &&
+            project.images &&
+            project.images.map((image) => (
+              <Image
+                loading="lazy"
+                key={image.alt}
+                src={image.src}
+                width={400}
+                height={200}
+                className="w-full h-full object-cover"
+                alt={image.alt}
+              ></Image>
+            ))}
         </div>
 
         <div className="mt-8">

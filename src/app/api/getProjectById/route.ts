@@ -9,7 +9,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = req.nextUrl;
   const id = searchParams.get("id");
 
-  const filePath = path.join(process.cwd(), "src/assets/data/project.json");
+  const filePath = path.join(process.cwd(), "public/data/project.json");
 
   try {
     const data = fs.readFileSync(filePath, "utf-8");
