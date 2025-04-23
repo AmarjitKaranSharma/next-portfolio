@@ -65,6 +65,10 @@ Their focus is on transparency, trust, and impact. Everything they do is aimed a
         icon: "/images/technologies/nodejs.svg",
       },
       {
+        name: "Python FastApi",
+        icon: "/images/technologies/nodejs.svg",
+      },
+      {
         name: "MongoDb",
         icon: "/images/technologies/nodejs.svg",
       },
