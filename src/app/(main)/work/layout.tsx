@@ -54,22 +54,21 @@ const WorkPage = ({
                   <p
                     className={`mt-2 text-sm transition-all duration-300 ${
                       isSelected ? "text-gray-300" : "text-gray-600"
-                    }`}
+                    } text-ellipsis max-w-full text-nowrap overflow-hidden`}
                   >
                     {project.description}
                   </p>
 
                   {/* Animated indicator */}
-                  {isSelected && (
+                  {
                     <motion.div
                       layoutId="activeIndicator"
-                      className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-full "
+                      className={`absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-full transition-opacity duration-200 ${
+                        isSelected ? "opacity-100" : "opacity-0"
+                      }`}
                       style={{ backgroundColor: project.color }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
+                    ></motion.div>
+                  }
                 </button>
 
                 {/* Hover effect */}
@@ -134,14 +133,16 @@ const WorkPage = ({
                     </p>
 
                     {/* Animated indicator */}
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-full"
-                      style={{ backgroundColor: project.color }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
+                    {isSelected && (
+                      <motion.div
+                        layoutId="activeIndicator"
+                        className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-full"
+                        style={{ backgroundColor: project.color }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    )}
 
                     {/* Hover effect */}
                     <div
