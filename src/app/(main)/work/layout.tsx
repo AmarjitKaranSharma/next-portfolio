@@ -4,6 +4,7 @@ import { SquareChevronRight } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { ProjectData } from "../../../../public/data/project";
 
 const WorkPage = ({
   children,
@@ -11,24 +12,14 @@ const WorkPage = ({
   children: React.ReactNode;
 }>) => {
   const router = useRouter();
-  const [projectList, setProjectList] = useState<Project[]>([]);
+  const projectList: Project[] = ProjectData;
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const activeRoute = usePathname();
   const currentProjectId = Number(activeRoute.split("/")[2]);
 
-  // Fetch project data from the server
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const response = await fetch("/api/getAllProjects");
-      const data = await response.json();
-      setProjectList(data);
-    };
-    fetchProjects();
-  }, []);
-
   // Navigate to the project details page
-  const onSelectProject = (project: string) => {
-    router.push(`/work/${project}`);
+  const onSelectProject = (projectId: number) => {
+    router.push(`/work/${projectId}`);
     setSidebarOpen(!sidebarOpen);
   };
 
@@ -143,16 +134,14 @@ const WorkPage = ({
                     </p>
 
                     {/* Animated indicator */}
-                    {isSelected && (
-                      <motion.div
-                        layoutId="activeIndicator"
-                        className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-full"
-                        style={{ backgroundColor: project.color }}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
+                    <motion.div
+                      layoutId="activeIndicator"
+                      className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-full"
+                      style={{ backgroundColor: project.color }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
 
                     {/* Hover effect */}
                     <div

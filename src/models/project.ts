@@ -3,11 +3,17 @@ export interface Project {
   description: string;
   link: string;
   images: Image[];
-  id: string;
+  id: number;
   color: string;
+  technologies: Technologies[];
 }
 
 export interface Image {
   src: string;
   alt: string;
+}
+
+export interface Technologies {
+  name: string;
+  icon: string;
 }
