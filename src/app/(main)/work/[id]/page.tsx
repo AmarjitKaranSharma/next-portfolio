@@ -1,9 +1,8 @@
 "use client";
 
 import { Project } from "@/models/project";
-import { image } from "framer-motion/client";
 import Image from "next/image";
-import { use, useEffect, useState } from "react";
+import { use } from "react";
 import { ProjectData } from "../../../../../public/data/project";
 // import Ojc from "@/projects/ojc-1.jpg";
 

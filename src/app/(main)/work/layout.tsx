@@ -2,7 +2,7 @@
 import { Project } from "@/models/project";
 import { SquareChevronRight } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ProjectData } from "../../../../public/data/project";
 
