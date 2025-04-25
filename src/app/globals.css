@@ -8,6 +8,15 @@
   --gap-navbar-content: 28px;
   --main-screen-padding-horizontally: 2.5rem;
   --main-screen-padding-vertically: 2rem;
+
+  /* Theme variables for easier access */
+  --background: var(--background);
+  --foreground: var(--foreground);
+  --container-background: var(--container-background);
+  --primary: var(--primary-color);
+  --active: var(--active-color);
+  --card-background: var(--card-background);
+  --card-icon-background: var(--card-icon-background);
 }
 
 @theme inline {

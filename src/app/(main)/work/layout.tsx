@@ -1,10 +1,12 @@
 "use client";
-import { Project } from "@/models/project";
-import { SquareChevronRight } from "lucide-react";
+import type { Project } from "@/models/project";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import type React from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ProjectData } from "../../../../public/data/project";
+import { ChevronRight, Folder, FolderOpen } from "lucide-react";
+import Image from "next/image";
 
 const WorkPage = ({
   children,
@@ -13,182 +15,283 @@ const WorkPage = ({
 }>) => {
   const router = useRouter();
   const projectList: Project[] = ProjectData;
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const activeRoute = usePathname();
   const currentProjectId = Number(activeRoute.split("/")[2]);
 
   // Navigate to the project details page
   const onSelectProject = (projectId: number) => {
     router.push(`/work/${projectId}`);
-    setSidebarOpen(!sidebarOpen);
   };
 
+  // Close sidebar on mobile when a project is selected
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setSidebarOpen(false);
+    }
+  }, [currentProjectId]);
+
   return (
-    <section className="grid relative lg:grid-cols-[400px_auto] md:grid-cols-1 gap-8 min-h-[calc(100vh-var(--navbar-height)-var(--gap-navbar-content)-var(--main-screen-padding-vertically)-var(--main-screen-padding-vertically))] mt-[calc(var(--gap-navbar-content)+var(--gap-navbar-content))] max-h-max">
-      <motion.div
-        className="w-full p-8 relative max-lg:hidden"
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <h2 className="text-5xl font-bold text-purple-500 mb-10">Work</h2>
-        <ul className="space-y-4">
-          {projectList.map((project, index) => {
-            const isSelected = index + 1 === currentProjectId;
-            return (
-              <li key={project.id} className="relative py-3 px-5">
-                <button
-                  onClick={() => onSelectProject(project.id)}
-                  className="text-left w-full cursor-pointer"
-                >
-                  <h3
-                    className={`text-2xl font-medium transition-all duration-300 ${
-                      isSelected
-                        ? "text-white"
-                        : "text-gray-500 hover:text-gray-300"
-                    }`}
-                  >
-                    {project.title}
-                  </h3>
+    <section className="relative mt-[calc(var(--gap-navbar-content))]">
+      {/* 3D Background Effect - Reusing from home page for consistency */}
+      <div className="fixed -z-10 h-screen top-0 w-screen left-1/2 -translate-x-1/2 opacity-50">
+        {/* We're keeping the 3D background for consistency with the home page */}
+      </div>
 
-                  <p
-                    className={`mt-2 text-sm transition-all duration-300 ${
-                      isSelected ? "text-gray-300" : "text-gray-600"
-                    } text-ellipsis max-w-full text-nowrap overflow-hidden`}
-                  >
-                    {project.description}
-                  </p>
-
-                  {/* Animated indicator */}
-                  {
-                    <motion.div
-                      layoutId="activeIndicator"
-                      className={`absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-full transition-opacity duration-200 ${
-                        isSelected ? "opacity-100" : "opacity-0"
-                      }`}
-                      style={{ backgroundColor: project.color }}
-                    ></motion.div>
-                  }
-                </button>
-
-                {/* Hover effect */}
-                <div
-                  className={`absolute -z-10 inset-0 rounded-lg transition-opacity duration-300 opacity-0 group-hover:opacity-5 ${
-                    isSelected ? "opacity-10" : ""
-                  }`}
-                  style={{
-                    background: `linear-gradient(135deg, ${project.color}, transparent)`,
-                  }}
-                />
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Decorative elements */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[1px] h-[80%] bg-gradient-to-b from-transparent via-purple-500 to-transparent opacity-50"></div>
-        <div className="absolute bottom-[10%] left-[20%] w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 opacity-10 blur-xl"></div>
-      </motion.div>
-
-      {/* Mobile Screen Sidebar */}
-      <div
-        className={`h-full absolute top-0 left-0 lg:hidden flex ${
-          sidebarOpen ? "gap-0" : "gap-5"
-        } transition-transform duration-300 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-[90%]"
-        }`}
-      >
+      {/* Main content container */}
+      <div className="relative grid lg:grid-cols-[300px_1fr] gap-6">
+        {/* Sidebar - Desktop */}
         <motion.div
-          className="max-sm:w-[300px] w-[400px] p-4 bg-background z-50"
+          className="hidden lg:block"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-5xl font-bold text-purple-500 mb-10">Work</h2>
-          <ul className="space-y-4">
-            {projectList.map((project, index) => {
-              const isSelected = index + 1 === currentProjectId;
-              return (
-                <li key={project.id} className="relative py-3 px-5">
-                  <button
-                    onClick={() => onSelectProject(project.id)}
-                    className="text-left w-full cursor-pointer"
-                  >
-                    <h3
-                      className={`text-2xl font-medium transition-all duration-300 ${
-                        isSelected
-                          ? "text-foreground"
-                          : "text-gray-500 hover:text-gray-300"
-                      }`}
-                    >
-                      {project.title}
-                    </h3>
+          <div className="sticky top-[calc(var(--navbar-height)+var(--gap-navbar-content)+var(--main-screen-padding-vertically))]">
+            <div className="bg-container-background backdrop-blur-md rounded-2xl p-6 overflow-hidden flex flex-col h-[calc(100vh-var(--navbar-height)-var(--gap-navbar-content)*2-var(--main-screen-padding-vertically)*2)]">
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-primary to-active bg-clip-text text-transparent mb-6">
+                My Work
+              </h2>
 
-                    <p
-                      className={`mt-2 text-sm transition-all duration-300 max-sm:hidden ${
-                        isSelected ? "text-gray-300" : "text-gray-600"
-                      }`}
-                    >
-                      {project.description}
-                    </p>
+              <div className="overflow-y-auto custom-scrollbar flex-grow pr-2">
+                <ul className="space-y-3">
+                  {projectList.map((project) => {
+                    const isSelected = project.id === currentProjectId;
+                    return (
+                      <motion.li
+                        key={project.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: project.id * 0.1 }}
+                      >
+                        <button
+                          onClick={() => onSelectProject(project.id)}
+                          className={`w-full text-left group relative overflow-hidden rounded-xl transition-all duration-300 ${
+                            isSelected
+                              ? "bg-gradient-to-r from-primary/20 to-active/20 backdrop-blur-sm"
+                              : "hover:bg-container-background/50"
+                          } p-4`}
+                        >
+                          <div className="flex items-center gap-3">
+                            {isSelected ? (
+                              <FolderOpen size={22} className="text-primary" />
+                            ) : (
+                              <Folder
+                                size={22}
+                                className="text-gray-400 group-hover:text-primary transition-colors"
+                              />
+                            )}
+                            <h3
+                              className={`text-lg font-medium transition-all duration-300 ${
+                                isSelected
+                                  ? "text-foreground"
+                                  : "text-foreground/70 group-hover:text-foreground"
+                              }`}
+                            >
+                              {project.title}
+                            </h3>
+                          </div>
 
-                    {/* Animated indicator */}
-                    {isSelected && (
-                      <motion.div
-                        layoutId="activeIndicator"
-                        className="absolute -left-1 top-1/2 -translate-y-1/2 w-1.5 h-12 rounded-full"
-                        style={{ backgroundColor: project.color }}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
+                          {project.images && project.images.length > 0 && (
+                            <div className="mt-3 rounded-lg overflow-hidden">
+                              <Image
+                                src={
+                                  project.images[0].src || "/placeholder.svg"
+                                }
+                                alt={project.images[0].alt}
+                                width={250}
+                                height={140}
+                                className="w-full h-24 object-cover transition-transform duration-500 group-hover:scale-105"
+                              />
+                            </div>
+                          )}
 
-                    {/* Hover effect */}
-                    <div
-                      className={`absolute -z-10 inset-0 rounded-lg transition-opacity duration-300 opacity-0 group-hover:opacity-5 ${
-                        isSelected ? "opacity-10" : ""
-                      }`}
-                      style={{
-                        background: `linear-gradient(135deg, ${project.color}, transparent)`,
-                      }}
-                    />
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+                          <p
+                            className={`mt-2 text-sm transition-all duration-300 line-clamp-2 ${
+                              isSelected
+                                ? "text-foreground/80"
+                                : "text-foreground/50 group-hover:text-foreground/80"
+                            }`}
+                          >
+                            {project.description.substring(0, 80)}...
+                          </p>
+
+                          {/* Animated indicator */}
+                          {isSelected && (
+                            <motion.div
+                              layoutId="activeIndicator"
+                              className="absolute left-0 top-0 w-1 h-full rounded-l-md"
+                              style={{ backgroundColor: project.color }}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              transition={{ duration: 0.3 }}
+                            />
+                          )}
+
+                          {/* Background glow effect on hover */}
+                          <div
+                            className={`absolute -z-10 inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 ${
+                              isSelected ? "opacity-30" : ""
+                            }`}
+                            style={{
+                              background: `radial-gradient(circle at center, ${project.color}, transparent 70%)`,
+                            }}
+                          />
+                        </button>
+                      </motion.li>
+                    );
+                  })}
+                </ul>
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute bottom-6 right-6 w-20 h-20 rounded-full bg-gradient-to-r from-primary/10 to-active/10 blur-xl"></div>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Decorative elements */}
-        {/* <div className="absolute top-1/2 -translate-y-1/2 right-0 w-[1px] h-[80%] bg-gradient-to-b from-transparent via-purple-500 to-transparent opacity-50"></div>
-        <div className="absolute bottom-[10%] left-[20%] w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 opacity-10 blur-xl"></div> */}
-        <SquareChevronRight
-          width={30}
-          height={30}
+        {/* Mobile sidebar toggle */}
+        <motion.button
+          className="lg:hidden fixed bottom-6 left-6 z-50 bg-primary text-white p-3 rounded-full shadow-lg"
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className={`transition-transform duration-300 cursor-pointer ${
-            sidebarOpen ? "rotate-180" : ""
-          }`}
-        ></SquareChevronRight>
-      </div>
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Toggle project menu"
+        >
+          <ChevronRight
+            size={24}
+            className={`transition-transform duration-300 ${
+              sidebarOpen ? "rotate-180" : ""
+            }`}
+          />
+        </motion.button>
 
-      <div className="max-sm:p-3 p-8 relative overflow-hidden -z-50 bg-container-background rounded-2xl h-full">
-        <AnimatePresence mode="wait">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className="h-full"
-          >
-            {children}
-          </motion.div>
+        {/* Mobile sidebar */}
+        <AnimatePresence>
+          {sidebarOpen && (
+            <motion.div
+              className="lg:hidden fixed inset-0 z-40 bg-background/80 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div
+                className="absolute left-0 top-0 h-full w-[85%] max-w-[320px] bg-container-background p-6 shadow-xl"
+                initial={{ x: "-100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "-100%" }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-active bg-clip-text text-transparent mb-6">
+                  My Work
+                </h2>
+
+                <div className="overflow-y-auto custom-scrollbar h-[calc(100%-4rem)]">
+                  <ul className="space-y-3">
+                    {projectList.map((project) => {
+                      const isSelected = project.id === currentProjectId;
+                      return (
+                        <li key={project.id}>
+                          <button
+                            onClick={() => onSelectProject(project.id)}
+                            className={`w-full text-left group relative overflow-hidden rounded-xl transition-all duration-300 ${
+                              isSelected
+                                ? "bg-gradient-to-r from-primary/20 to-active/20"
+                                : "hover:bg-container-background/50"
+                            } p-4`}
+                          >
+                            <div className="flex items-center gap-3">
+                              {isSelected ? (
+                                <FolderOpen
+                                  size={20}
+                                  className="text-primary"
+                                />
+                              ) : (
+                                <Folder
+                                  size={20}
+                                  className="text-gray-400 group-hover:text-primary transition-colors"
+                                />
+                              )}
+                              <h3
+                                className={`text-base font-medium transition-all duration-300 ${
+                                  isSelected
+                                    ? "text-foreground"
+                                    : "text-foreground/70 group-hover:text-foreground"
+                                }`}
+                              >
+                                {project.title}
+                              </h3>
+                            </div>
+
+                            {project.images && project.images.length > 0 && (
+                              <div className="mt-3 rounded-lg overflow-hidden">
+                                <Image
+                                  src={
+                                    project.images[0].src || "/placeholder.svg"
+                                  }
+                                  alt={project.images[0].alt}
+                                  width={250}
+                                  height={140}
+                                  className="w-full h-20 object-cover"
+                                />
+                              </div>
+                            )}
+
+                            <p
+                              className={`mt-2 text-xs transition-all duration-300 line-clamp-2 ${
+                                isSelected
+                                  ? "text-foreground/80"
+                                  : "text-foreground/50 group-hover:text-foreground/80"
+                              }`}
+                            >
+                              {project.description.substring(0, 60)}...
+                            </p>
+
+                            {/* Animated indicator */}
+                            {isSelected && (
+                              <div
+                                className="absolute left-0 top-0 w-1 h-full rounded-l-md"
+                                style={{ backgroundColor: project.color }}
+                              />
+                            )}
+                          </button>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </motion.div>
+
+              {/* Close overlay by clicking outside */}
+              <div
+                className="absolute inset-0 z-[-1]"
+                onClick={() => setSidebarOpen(false)}
+                aria-hidden="true"
+              />
+            </motion.div>
+          )}
         </AnimatePresence>
 
-        {/* Background decorative elements */}
-        <div className="absolute top-[10%] right-[10%] w-64 h-64 rounded-full bg-purple-900 opacity-5 blur-3xl"></div>
-        <div className="absolute bottom-[20%] left-[30%] w-40 h-40 rounded-full bg-pink-700 opacity-5 blur-2xl"></div>
+        {/* Main content area */}
+        <div className="w-full">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentProjectId}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="bg-container-background backdrop-blur-md rounded-2xl overflow-hidden relative"
+            >
+              {children}
+
+              {/* Background decorative elements */}
+              <div className="absolute top-[10%] right-[10%] w-64 h-64 rounded-full bg-primary/10 blur-3xl pointer-events-none"></div>
+              <div className="absolute bottom-[20%] left-[30%] w-40 h-40 rounded-full bg-active/10 blur-2xl pointer-events-none"></div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );
