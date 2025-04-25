@@ -26,8 +26,8 @@ export default function WorkDetail({ params }: PageProps) {
   }
 
   return (
-    <div className="p-6 md:p-8 max-h-[calc(100vh-var(--navbar-height)-var(--gap-navbar-content)*2-var(--main-screen-padding-vertically)*2)] overflow-y-auto custom-scrollbar">
-      <div className="grid lg:grid-cols-[1fr_350px] gap-8">
+    <div className="p-6 md:p-8 overflow-y-auto custom-scrollbar">
+      <div className="flex flex-col-reverse lg:grid lg:grid-cols-[auto_350px] gap-8">
         {/* Left column - Project showcase */}
         <div className="order-2 lg:order-1">
           <motion.div
@@ -114,7 +114,7 @@ export default function WorkDetail({ params }: PageProps) {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-4 mb-8">
+            <div className="flex flex-wrap gap-4">
               <Link
                 href={project.link}
                 target="_blank"
