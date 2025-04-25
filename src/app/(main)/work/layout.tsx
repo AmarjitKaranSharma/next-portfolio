@@ -112,18 +112,6 @@ const WorkPage = ({
                         {project.description.substring(0, 80)}...
                       </p>
 
-                      {/* Animated indicator */}
-                      {isSelected && (
-                        <motion.div
-                          layoutId="activeIndicator"
-                          className="absolute left-0 top-0 w-1 h-full rounded-l-md"
-                          style={{ backgroundColor: project.color }}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 0.3 }}
-                        />
-                      )}
-
                       {/* Background glow effect on hover */}
                       <div
                         className={`absolute -z-10 inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 ${
