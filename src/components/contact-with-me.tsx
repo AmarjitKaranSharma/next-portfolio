@@ -41,14 +41,14 @@ export default function ContactWithMe() {
         </motion.div>
 
         <motion.div
-          className="flex justify-center gap-6"
+          className="flex justify-center gap-6 text-foreground"
           initial={{ opacity: 0, y: 20 }}
           animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <Link
             href="#"
-            className={`flex items-center gap-2 dark:text-gray-300 hover:text-purple-400 transition-colors`}
+            className={`flex items-center gap-2 hover:text-purple-400 transition-colors`}
             aria-label="Email me"
           >
             <svg
@@ -71,7 +71,7 @@ export default function ContactWithMe() {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex items-center gap-2 dark:text-gray-300 hover:text-purple-400 transition-colors`}
+            className={`flex items-center gap-2 hover:text-purple-400 transition-colors`}
             aria-label="LinkedIn profile"
           >
             <svg
@@ -93,7 +93,7 @@ export default function ContactWithMe() {
           </Link>
           <Link
             href="/"
-            className={`flex items-center gap-2 dark:text-gray-300 hover:text-purple-400 transition-colors`}
+            className={`flex items-center gap-2 hover:text-purple-400 transition-colors`}
             aria-label="View portfolio"
           >
             <svg

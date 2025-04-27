@@ -1,28 +1,28 @@
-"use client"
+"use client";
 
-import type { Project } from "@/models/project"
-import Image from "next/image"
-import { use, useState } from "react"
-import { ProjectData } from "../../../../../public/data/project"
-import { motion } from "framer-motion"
-import { ExternalLink, Github } from "lucide-react"
-import Link from "next/link"
+import type { Project } from "@/models/project";
+import Image from "next/image";
+import { use, useState } from "react";
+import { ProjectData } from "../../../../../public/data/project";
+import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
+import Link from "next/link";
 
 interface PageProps {
-  params: Promise<{ id: number }>
+  params: Promise<{ id: number }>;
 }
 
 export default function WorkDetail({ params }: PageProps) {
-  const { id } = use(params)
-  const project: Project | undefined = ProjectData.find((p) => p.id == id)
-  const [imageIndex, setImageIndex] = useState(0)
+  const { id } = use(params);
+  const project: Project | undefined = ProjectData.find((p) => p.id == id);
+  const [imageIndex, setImageIndex] = useState(0);
 
   if (!project) {
     return (
       <div className="flex items-center justify-center h-[60vh]">
         <p className="text-xl text-gray-400">Project not found</p>
       </div>
-    )
+    );
   }
 
   return (
@@ -87,7 +87,7 @@ export default function WorkDetail({ params }: PageProps) {
           >
             <h1 className="text-3xl md:text-4xl font-bold mb-4">
               <span
-                className="bg-gradient-to-r bg-clip-text text-transparent"
+                className="bg-gradient-to-r bg-clip-text text-transparent font-semibold"
                 style={{
                   backgroundImage: `linear-gradient(to right, var(--foreground), ${project.color})`,
                 }}
@@ -97,7 +97,9 @@ export default function WorkDetail({ params }: PageProps) {
             </h1>
 
             <div className="prose prose-invert max-w-none mb-8">
-              <p className="text-foreground/80 leading-relaxed whitespace-pre-line">{project.description}</p>
+              <p className="text-foreground/80 leading-relaxed whitespace-pre-line">
+                {project.description}
+              </p>
             </div>
 
             <div className="flex flex-wrap gap-3 mb-8">
@@ -147,38 +149,39 @@ export default function WorkDetail({ params }: PageProps) {
         >
           <div className="bg-background/30 backdrop-blur-md rounded-xl p-6 border border-foreground/20 sticky top-4">
             <h2 className="text-xl font-semibold mb-6 flex items-center gap-2">
-              <span className="inline-block w-3 h-3 rounded-full" style={{ backgroundColor: project.color }} />
+              <span
+                className="inline-block w-3 h-3 rounded-full"
+                style={{ backgroundColor: project.color }}
+              />
               Project Details
             </h2>
 
             <div className="space-y-6">
               <div>
-                <h3 className="text-sm text-foreground/60 mb-2">PROJECT TYPE</h3>
-                <p className="font-medium">Web Application</p>
-              </div>
-
-              <div>
-                <h3 className="text-sm text-foreground/60 mb-2">CLIENT</h3>
-                <p className="font-medium">Company XYZ</p>
+                <h3 className="text-sm text-foreground/60 mb-2">
+                  PROJECT TYPE
+                </h3>
+                <p className="font-medium">{project.details.projectType}</p>
               </div>
 
               <div>
                 <h3 className="text-sm text-foreground/60 mb-2">DURATION</h3>
-                <p className="font-medium">3 Months</p>
+                <p className="font-medium">{project.details.duration}</p>
               </div>
 
               <div>
                 <h3 className="text-sm text-foreground/60 mb-2">MY ROLE</h3>
-                <p className="font-medium">Lead Developer</p>
+                <p className="font-medium">{project.details.role}</p>
               </div>
 
               <div>
-                <h3 className="text-sm text-foreground/60 mb-2">KEY FEATURES</h3>
+                <h3 className="text-sm text-foreground/60 mb-2">
+                  KEY FEATURES
+                </h3>
                 <ul className="list-disc list-inside text-sm space-y-1">
-                  <li>Responsive design</li>
-                  <li>User authentication</li>
-                  <li>Real-time data updates</li>
-                  <li>Interactive dashboard</li>
+                  {project.details.keyFeatures.map((feature) => {
+                    return <li key={feature}>{feature}</li>;
+                  })}
                 </ul>
               </div>
             </div>
@@ -192,5 +195,5 @@ export default function WorkDetail({ params }: PageProps) {
         </motion.div>
       </div>
     </div>
-  )
+  );
 }

@@ -6,6 +6,7 @@ export interface Project {
   id: number;
   color: string;
   technologies: Technologies[];
+  details: ProjectDetails;
 }
 
 export interface Image {
@@ -16,4 +17,11 @@ export interface Image {
 export interface Technologies {
   name: string;
   icon: string;
+}
+
+export interface ProjectDetails {
+  projectType: string;
+  duration: string;
+  role: string;
+  keyFeatures: string[];
 }

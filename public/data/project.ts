@@ -37,6 +37,18 @@ Their focus is on transparency, trust, and impact. Everything they do is aimed a
         icon: "/images/technologies/nodejs.svg",
       },
     ],
+    details: {
+      projectType: "Web Application (User and Admin Panel)",
+      duration: "4 months",
+      role: "Frontend Developer",
+      keyFeatures: [
+        "Responsive Design",
+        "User Authentication",
+        "Real-time data updates",
+        "Interactive Dashboard",
+        "Custom Payment Gateway",
+      ],
+    },
   },
   {
     id: 2,
@@ -73,32 +85,44 @@ Their focus is on transparency, trust, and impact. Everything they do is aimed a
         icon: "/images/technologies/nodejs.svg",
       },
     ],
+    details: {
+      projectType: "SaaS and Admin Panel",
+      duration: "Work in Progress",
+      role: "Frontend Developer",
+      keyFeatures: [
+        "Responsive Design",
+        "User Authentication",
+        "Identifying People's criminal background",
+        "Processing among millions of criminals",
+        "Providing Services to multi-users to keep them safe",
+      ],
+    },
   },
-  {
-    id: 3,
-    title: "Project Three",
-    description: "A brief description of Project Three.",
-    link: "#",
-    color: "#8B5CF6",
-    images: [
-      {
-        src: "/images/projects/ojc-1.png",
-        alt: "Project Three Image",
-      },
-    ],
-    technologies: [
-      {
-        name: "React",
-        icon: "/images/technologies/react.svg",
-      },
-      {
-        name: "Node.js",
-        icon: "/images/technologies/nodejs.svg",
-      },
-      {
-        name: "Tailwind CSS",
-        icon: "/images/technologies/tailwindcss.svg",
-      },
-    ],
-  },
+  // {
+  //   id: 3,
+  //   title: "Project Three",
+  //   description: "A brief description of Project Three.",
+  //   link: "#",
+  //   color: "#8B5CF6",
+  //   images: [
+  //     {
+  //       src: "/images/projects/ojc-1.png",
+  //       alt: "Project Three Image",
+  //     },
+  //   ],
+  //   technologies: [
+  //     {
+  //       name: "React",
+  //       icon: "/images/technologies/react.svg",
+  //     },
+  //     {
+  //       name: "Node.js",
+  //       icon: "/images/technologies/nodejs.svg",
+  //     },
+  //     {
+  //       name: "Tailwind CSS",
+  //       icon: "/images/technologies/tailwindcss.svg",
+  //     },
+  //   ],
+  // },
 ];

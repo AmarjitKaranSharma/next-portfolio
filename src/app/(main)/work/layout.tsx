@@ -64,7 +64,7 @@ const WorkPage = ({
                   >
                     <button
                       onClick={() => onSelectProject(project.id)}
-                      className={`w-full text-left group relative overflow-hidden rounded-xl transition-all duration-300 ${
+                      className={`w-full text-left group relative overflow-hidden rounded-xl transition-all duration-300 cursor-pointer ${
                         isSelected
                           ? "bg-gradient-to-r from-primary/20 to-active/20 backdrop-blur-sm"
                           : "hover:bg-container-background/50"
