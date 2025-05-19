@@ -32,24 +32,25 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    console.log("Form submitted:", formData);
 
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // await new Promise((resolve) => setTimeout(resolve, 1500));
 
     setIsSubmitting(false);
     setIsSubmitted(true);
 
     // Reset form after showing success message
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        fullName: "",
-        companyName: "",
-        email: "",
-        phone: "",
-        agreeToTerms: false,
-      });
-    }, 3000);
+    // setTimeout(() => {
+    //   setIsSubmitted(false);
+    //   setFormData({
+    //     fullName: "",
+    //     companyName: "",
+    //     email: "",
+    //     phone: "",
+    //     agreeToTerms: false,
+    //   });
+    // }, 3000);
   };
 
   const containerVariants = {
@@ -78,7 +79,7 @@ export default function ContactForm() {
   // };
 
   return (
-    <div className="min-h-[100dvh] flex items-center justify-center text-white px-4 py-14">
+    <div className="min-h-[calc(100vh-var(--navbar-height))] flex items-center justify-center text-foreground px-4 max-sm:my-6">
       <motion.div
         className="w-full max-w-6xl grid md:grid-cols-2 gap-8 rounded-xl"
         initial="hidden"
@@ -96,7 +97,7 @@ export default function ContactForm() {
           >
             Meet with Amar
           </motion.h1>
-          <motion.p className="text-gray-300 mb-8" variants={itemVariants}>
+          <motion.p className="dark:text-gray-300 mb-8" variants={itemVariants}>
             Let us show you how we can transform the way you govern and share
             your sensitive data.
           </motion.p>
@@ -159,24 +160,18 @@ export default function ContactForm() {
                   htmlFor="fullName"
                   className="text-sm font-medium flex gap-1"
                 >
-                  Full Name <span className="text-purple-500">*</span>
+                  Full Name <span className="text-primary">*</span>
                 </Label>
-                <motion.div
-                  whileFocus="focus"
-                  whileTap="focus"
-                  initial="blur"
-                  animate="blur"
-                >
-                  <Input
-                    id="fullName"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    placeholder="Your full name"
-                    required
-                    className="bg-[#1a1d2d] border-[#2a2d3d] text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
-                  />
-                </motion.div>
+
+                <Input
+                  id="fullName"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  placeholder="Your full name"
+                  required
+                  className="dark:bg-[#1a1d2d] dark:border-[#2a2d3d] bg-white border-white dark:text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
+                />
               </motion.div>
 
               <motion.div className="space-y-2" variants={itemVariants}>
@@ -184,24 +179,18 @@ export default function ContactForm() {
                   htmlFor="companyName"
                   className="text-sm font-medium flex gap-1"
                 >
-                  Company Name <span className="text-purple-500">*</span>
+                  Company Name <span className="text-primary">*</span>
                 </Label>
-                <motion.div
-                  whileFocus="focus"
-                  whileTap="focus"
-                  initial="blur"
-                  animate="blur"
-                >
-                  <Input
-                    id="companyName"
-                    name="companyName"
-                    value={formData.companyName}
-                    onChange={handleChange}
-                    placeholder="Your company name"
-                    required
-                    className="bg-[#1a1d2d] border-[#2a2d3d] text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
-                  />
-                </motion.div>
+
+                <Input
+                  id="companyName"
+                  name="companyName"
+                  value={formData.companyName}
+                  onChange={handleChange}
+                  placeholder="Your company name"
+                  required
+                  className="dark:bg-[#1a1d2d] dark:border-[#2a2d3d] bg-white border-white dark:text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
+                />
               </motion.div>
 
               <motion.div className="space-y-2" variants={itemVariants}>
@@ -209,25 +198,19 @@ export default function ContactForm() {
                   htmlFor="email"
                   className="text-sm font-medium flex gap-1"
                 >
-                  Email <span className="text-purple-500">*</span>
+                  Email <span className="text-primary">*</span>
                 </Label>
-                <motion.div
-                  whileFocus="focus"
-                  whileTap="focus"
-                  initial="blur"
-                  animate="blur"
-                >
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Your email address"
-                    required
-                    className="bg-[#1a1d2d] border-[#2a2d3d] text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
-                  />
-                </motion.div>
+
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Your email address"
+                  required
+                  className="dark:bg-[#1a1d2d] dark:border-[#2a2d3d] bg-white border-white dark:text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
+                />
               </motion.div>
 
               <motion.div className="space-y-2" variants={itemVariants}>
@@ -235,31 +218,24 @@ export default function ContactForm() {
                   htmlFor="phone"
                   className="text-sm font-medium flex gap-1"
                 >
-                  Phone <span className="text-purple-500">*</span>
+                  Phone <span className="text-primary">*</span>
                 </Label>
-                <motion.div
-                  whileFocus="focus"
-                  whileTap="focus"
-                  initial="blur"
-                  animate="blur"
-                >
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="Your phone number"
-                    required
-                    className="bg-[#1a1d2d] border-[#2a2d3d] text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
-                  />
-                </motion.div>
+
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="text"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Your Phone Number"
+                  required
+                  className="dark:bg-[#1a1d2d] dark:border-[#2a2d3d] bg-white border-white dark:text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
+                />
               </motion.div>
 
               <motion.div
                 className="flex items-center gap-2"
                 variants={itemVariants}
-                whileHover={{ scale: 1.01 }}
               >
                 <Checkbox
                   id="terms"
@@ -269,7 +245,7 @@ export default function ContactForm() {
                 />
                 <Label
                   htmlFor="terms"
-                  className="text-sm text-gray-300 cursor-pointer"
+                  className="text-sm dark:text-gray-300 cursor-pointer"
                 >
                   I agree that my personal data will be processed in accordance
                   with the privacy policy
@@ -280,7 +256,7 @@ export default function ContactForm() {
                 <motion.button
                   type="submit"
                   disabled={!formData.agreeToTerms || isSubmitting}
-                  className={`w-full md:w-auto px-8 py-2 h-12 bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-all ${
+                  className={`w-full md:w-auto px-8 py-2 h-12 bg-primary active:bg-purple-700 text-white rounded-md transition-all ${
                     isSubmitting ? "opacity-80" : ""
                   }`}
                   whileHover={{ scale: 1.03 }}
