@@ -19,7 +19,7 @@ export default function WorkDetail({ params }: PageProps) {
 
   if (!project) {
     return (
-      <div className="flex items-center justify-center h-[60vh]">
+      <div className="flex items-center justify-center h-[60dvh]">
         <p className="text-xl text-gray-400">Project not found</p>
       </div>
     );

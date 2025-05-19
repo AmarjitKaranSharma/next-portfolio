@@ -10,21 +10,19 @@ import ContactWithMe from "@/components/contact-with-me";
 
 export default function Home() {
   const typingAnimation = [
-    "Modern websites",
+    "Modern Websites",
     1500,
-    "UI/UX design",
+    "UI/UX Designs",
     1500,
-    "SAAS products",
+    "SAAS Products",
     1500,
   ];
 
-  // ref for scrollinng animation of div
-
   return (
     <section className="min-h-full max-h-max w-full">
-      <section className="w-full h-[calc(100vh-var(--navbar-height))] grid place-items-center pb-20">
+      <section className="w-full h-[calc(100dvh-var(--navbar-height))] grid place-items-center pb-20">
         {/* 3D Background Effect */}
-        <div className="fixed -z-10 h-screen top-0 w-screen left-1/2 -translate-x-1/2">
+        <div className="fixed -z-10 h-[100dvh] top-0 w-screen left-1/2 -translate-x-1/2">
           <ThreeDBackground />
         </div>
 
@@ -34,7 +32,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="md:text-8xl text-7xl max-sm:text-6xl font-extrabold tracking-tighter z-10"
+            className="text-7xl max-sm:text-6xl font-extrabold tracking-tighter z-10"
           >
             Building Scalable Web Experiences, One Line at a Time
           </motion.h1>
@@ -43,11 +41,11 @@ export default function Home() {
               sequence={typingAnimation}
               wrapper="span"
               speed={50}
-              className={`text-2xl font-medium`}
+              className={`text-2xl font-medium capitalize`}
               repeat={Number.POSITIVE_INFINITY}
             />
           </div>
-          <div className="flex gap-2 items-center justify-center z-10">
+          {/* <div className="flex gap-2 items-center justify-center z-10">
             <input
               type="text"
               className="rounded-3xl bg-white text-black placeholder:text-gray-500/60 py-2 px-4 flex-1 max-w-[80%] w-full"
@@ -57,14 +55,23 @@ export default function Home() {
               Send
               <ArrowRight size={20} />
             </button>
-          </div>
+          </div> */}
+          <motion.a
+            href="#what-i-do"
+            className={`inline-flex gap-1 px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-md transition-all`}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Explore
+            <ArrowRight></ArrowRight>
+          </motion.a>
         </div>
       </section>
 
       <section className="w-full pb-20 grid place-items-center">
         <div className="relative text-3xl font-semibold tracking-tighter ">
           <div className="grid grid-cols-2 max-sm:grid-cols-1 max-sm:justify-center gap-10 items-center justify-between">
-            <h3 className="md:text-7xl text-5xl justify-center items-center max-sm:gap-2 flex flex-col gap-5">
+            <h3 className="md:text-6xl text-5xl justify-center items-center max-sm:gap-2 flex flex-col gap-5">
               <motion.span
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

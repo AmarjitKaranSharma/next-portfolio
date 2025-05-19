@@ -34,7 +34,7 @@ const WorkPage = ({
   return (
     <section className="mt-[calc(var(--gap-navbar-content)*1.5)]">
       {/* 3D Background Effect - Reusing from home page for consistency */}
-      <div className="fixed -z-10 h-screen top-0 w-screen left-1/2 -translate-x-1/2 opacity-50">
+      <div className="fixed -z-10 h-[100dvh] top-0 w-screen left-1/2 -translate-x-1/2 opacity-50">
         {/* We're keeping the 3D background for consistency with the home page */}
       </div>
 
@@ -42,7 +42,7 @@ const WorkPage = ({
       <div className="relative grid lg:grid-cols-[280px_1fr] gap-6 h-full">
         {/* Sidebar - Desktop */}
         <motion.div
-          className="sticky right-0 bottom-0 hidden bg-container-background backdrop-blur-md rounded-2xl p-6 overflow-hidden lg:flex lg:flex-col max-h-[calc(100vh-var(--navbar-height)-var(--gap-navbar-content)-var(--main-screen-padding-vertically))]"
+          className="sticky right-0 bottom-0 hidden bg-container-background backdrop-blur-md rounded-2xl p-6 overflow-hidden lg:flex lg:flex-col max-h-[calc(100dvh-var(--navbar-height)-var(--gap-navbar-content)-var(--main-screen-padding-vertically))]"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -263,7 +263,7 @@ const WorkPage = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.4 }}
-            className="bg-container-background backdrop-blur-md rounded-2xl relative max-h-[calc(100vh-var(--navbar-height)-var(--gap-navbar-content)-var(--main-screen-padding-vertically))] overflow-y-auto"
+            className="bg-container-background backdrop-blur-md rounded-2xl relative max-h-[calc(100dvh-var(--navbar-height)-var(--gap-navbar-content)-var(--main-screen-padding-vertically))] overflow-y-auto"
           >
             {children}
 

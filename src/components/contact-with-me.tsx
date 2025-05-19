@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import Link from "next/link";
-import PulsingButton from "./buttons/pulsing-button";
+import PulsingButton from "./ui/buttons/pulsing-button";
 
 export default function ContactWithMe() {
   const ctaRef = useRef<HTMLDivElement>(null);
@@ -68,7 +68,7 @@ export default function ContactWithMe() {
             Email
           </Link>
           <Link
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/amarjit-karan-sharma-57108a2b7"
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center gap-2 hover:text-purple-400 transition-colors`}

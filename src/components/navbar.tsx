@@ -9,12 +9,15 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/shadecn-lib/ui/dropdown-menu";
-import { Menu, Moon, Sun } from "lucide-react";
+import {
+  Menu,
+  // Moon,
+  // Sun
+} from "lucide-react";
 import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
 
-export default function NavigationBar({
-  changeTheme,
-}: {
+export default function NavigationBar({}: // changeTheme,
+{
   changeTheme: (theme: string) => void;
 }) {
   const activeRoute = usePathname();
@@ -23,20 +26,20 @@ export default function NavigationBar({
     setMenuOpen((prev) => !prev);
   };
 
-  const [theme, setTheme] = useState<string | null>(null);
+  // const [theme, setTheme] = useState<string | null>(null);
   useEffect(() => {
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    const storedTheme = localStorage.getItem("theme");
-    const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
-    setTheme(initialTheme);
+    // const prefersDark = window.matchMedia(
+    //   "(prefers-color-scheme: dark)"
+    // ).matches;
+    // const storedTheme = localStorage.getItem("theme");
+    // const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
+    // setTheme(initialTheme);
   }, []);
 
-  const toggleTheme = async (value: string) => {
-    setTheme(value);
-    if (theme) changeTheme(value);
-  };
+  // const toggleTheme = async (value: string) => {
+  //   setTheme(value);
+  //   if (theme) changeTheme(value);
+  // };
 
   const menuItems = [
     {
@@ -49,19 +52,26 @@ export default function NavigationBar({
       route: "/work/1",
       matchRoute: "work",
     },
+    {
+      label: "Contact",
+      route: "/contact-form",
+      matchRoute: "contact-form",
+    },
   ];
 
   return (
-    <nav className="flex items-center justify-between h-[var(--navbar-height)] px-5 backdrop-blur-lg rounded-full bg-container-background">
+    <nav className="flex items-center justify-between h-[var(--navbar-height)] px-5 backdrop-blur-lg rounded-full bg-container-background max-w-5xl mx-auto">
       <section className="flex items-center gap-5">
-        <Image src="/images/avatar.svg" alt="avatar" width={70} height={70} />
-        <p className="text-xl">Glad, You are here</p>
+        <div className="rounded-full w-14 overflow-hidden aspect-square grid place-items-center">
+          <Image src="/images/logo.png" alt="logo" width={150} height={150} />
+        </div>
+        <p className="text-xl">Hi, I am Amar.</p>
       </section>
       <section className="flex items-center gap-8 px-5 max-sm:hidden">
         {menuItems.map((item) => (
           <Link
             key={item.label}
-            className={`text-xl font-medium ${
+            className={`text-lg font-medium ${
               activeRoute == item.route
                 ? "text-active"
                 : activeRoute.includes(item.matchRoute!)
@@ -73,7 +83,7 @@ export default function NavigationBar({
             {item.label}
           </Link>
         ))}
-        <button
+        {/* <button
           onClick={() => {
             toggleTheme(theme === "dark" ? "light" : "dark");
           }}
@@ -81,7 +91,7 @@ export default function NavigationBar({
           aria-label={theme ? "Switch to light mode" : "Switch to dark mode"}
         >
           {theme === "dark" ? <Sun></Sun> : <Moon></Moon>}
-        </button>
+        </button> */}
       </section>
       <DropdownMenu open={menuOpen} onOpenChange={toggleMenu}>
         <DropdownMenuTrigger className="sm:hidden">
@@ -107,7 +117,7 @@ export default function NavigationBar({
               </Link>
             </DropdownMenuItem>
           ))}
-          <DropdownMenuItem
+          {/* <DropdownMenuItem
             className="flex gap-5 items-center capitalize text-md font-medium"
             onClick={() => toggleTheme(theme === "dark" ? "light" : "dark")}
           >
@@ -119,7 +129,7 @@ export default function NavigationBar({
                 <Moon width={25}></Moon>
               )}
             </span>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
         </DropdownMenuContent>
       </DropdownMenu>
     </nav>

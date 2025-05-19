@@ -4,7 +4,8 @@
 :root {
   --font-poppins: "Poppins";
   --font-ubuntu: "Ubuntu";
-  --navbar-height: 6rem;
+  --font-varela_round: "Varela Round";
+  --navbar-height: 5rem;
   --gap-navbar-content: 28px;
   --main-screen-padding-horizontally: 2.5rem;
   --main-screen-padding-vertically: 2rem;

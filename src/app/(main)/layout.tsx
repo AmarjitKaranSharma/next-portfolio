@@ -1,11 +1,17 @@
 "use client";
-import { Poppins, Ubuntu } from "next/font/google";
+import { Poppins, Ubuntu, Varela_Round } from "next/font/google";
 import ".././globals.css";
 import NavigationBar from "../../components/navbar";
 import { useEffect } from "react";
 
 const poppins = Poppins({
   variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const varela_round = Varela_Round({
+  variable: "--font-varela-round",
   subsets: ["latin"],
   weight: "400",
 });
@@ -42,7 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${poppins.variable} ${ubuntu.variable} antialiased w-full px-[var(--main-screen-padding-horizontally)] py-[var(--main-screen-padding-vertically)] overflow-x-hidden`}
+        className={`${poppins.variable} ${ubuntu.variable} ${varela_round.variable} antialiased w-full px-[var(--main-screen-padding-horizontally)] py-[var(--main-screen-padding-vertically)] overflow-x-hidden`}
       >
         <section className="sticky top-5 z-40 max-w-[1400px] mx-auto">
           <NavigationBar changeTheme={changeTheme} />
