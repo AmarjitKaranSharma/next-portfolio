@@ -47,7 +47,8 @@ export default function ContactWithMe() {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <Link
-            href="#"
+            target="_blank"
+            href="mailto:amarjitkaransharma@gmail.com"
             className={`flex items-center gap-2 hover:text-purple-400 transition-colors`}
             aria-label="Email me"
           >
@@ -92,7 +93,8 @@ export default function ContactWithMe() {
             LinkedIn
           </Link>
           <Link
-            href="/"
+            target="_blank"
+            href="https://wa.me/+919988887728"
             className={`flex items-center gap-2 hover:text-purple-400 transition-colors`}
             aria-label="View portfolio"
           >

@@ -11,8 +11,8 @@ import { Label } from "@/components/ui/label";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    fullName: "",
-    companyName: "",
+    name: "",
+    message: "",
     email: "",
     phone: "",
     agreeToTerms: false,
@@ -34,23 +34,18 @@ export default function ContactForm() {
     setIsSubmitting(true);
     console.log("Form submitted:", formData);
 
-    // Simulate API call
-    // await new Promise((resolve) => setTimeout(resolve, 1500));
+    const res = await fetch("/api/sent-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-
-    // Reset form after showing success message
-    // setTimeout(() => {
-    //   setIsSubmitted(false);
-    //   setFormData({
-    //     fullName: "",
-    //     companyName: "",
-    //     email: "",
-    //     phone: "",
-    //     agreeToTerms: false,
-    //   });
-    // }, 3000);
+    if (res.ok) {
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+    }
   };
 
   const containerVariants = {
@@ -144,9 +139,8 @@ export default function ContactForm() {
                 <Check size={32} className="text-white" />
               </motion.div>
               <h2 className="text-2xl font-bold mb-2">Message Sent!</h2>
-              <p className="text-gray-300">
-                Thank you for reaching out. Cameron will get back to you
-                shortly.
+              <p className="dark:text-gray-300">
+                Thank you for reaching out. Amar will get back to you shortly.
               </p>
             </motion.div>
           ) : (
@@ -157,37 +151,18 @@ export default function ContactForm() {
             >
               <motion.div className="space-y-2" variants={itemVariants}>
                 <Label
-                  htmlFor="fullName"
+                  htmlFor="name"
                   className="text-sm font-medium flex gap-1"
                 >
-                  Full Name <span className="text-primary">*</span>
+                  Name <span className="text-primary">*</span>
                 </Label>
 
                 <Input
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
+                  id="name"
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   placeholder="Your full name"
-                  required
-                  className="dark:bg-[#1a1d2d] dark:border-[#2a2d3d] bg-white border-white dark:text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
-                />
-              </motion.div>
-
-              <motion.div className="space-y-2" variants={itemVariants}>
-                <Label
-                  htmlFor="companyName"
-                  className="text-sm font-medium flex gap-1"
-                >
-                  Company Name <span className="text-primary">*</span>
-                </Label>
-
-                <Input
-                  id="companyName"
-                  name="companyName"
-                  value={formData.companyName}
-                  onChange={handleChange}
-                  placeholder="Your company name"
                   required
                   className="dark:bg-[#1a1d2d] dark:border-[#2a2d3d] bg-white border-white dark:text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
                 />
@@ -229,6 +204,24 @@ export default function ContactForm() {
                   onChange={handleChange}
                   placeholder="Your Phone Number"
                   required
+                  className="dark:bg-[#1a1d2d] dark:border-[#2a2d3d] bg-white border-white dark:text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
+                />
+              </motion.div>
+
+              <motion.div className="space-y-2" variants={itemVariants}>
+                <Label
+                  htmlFor="message"
+                  className="text-sm font-medium flex gap-1"
+                >
+                  Message
+                </Label>
+
+                <Input
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Your Message"
                   className="dark:bg-[#1a1d2d] dark:border-[#2a2d3d] bg-white border-white dark:text-white h-12 rounded-md focus:ring-2 focus:ring-purple-500 transition-all"
                 />
               </motion.div>
