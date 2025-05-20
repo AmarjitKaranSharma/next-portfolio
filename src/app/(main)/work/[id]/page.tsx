@@ -38,6 +38,7 @@ export default function WorkDetail({ params }: PageProps) {
           >
             {project.images && project.images.length > 0 && (
               <Image
+                loading="lazy"
                 src={project.images[imageIndex].src || "/placeholder.svg"}
                 alt={project.images[imageIndex].alt}
                 width={800}
@@ -69,6 +70,7 @@ export default function WorkDetail({ params }: PageProps) {
                   }`}
                 >
                   <Image
+                    loading="lazy"
                     src={image.src || "/placeholder.svg"}
                     alt={`Thumbnail ${idx + 1}`}
                     width={80}

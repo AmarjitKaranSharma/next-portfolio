@@ -93,6 +93,7 @@ const WorkPage = ({
                       {project.images && project.images.length > 0 && (
                         <div className="mt-3 rounded-lg overflow-hidden">
                           <Image
+                            loading="lazy"
                             src={project.images[0].src || "/placeholder.svg"}
                             alt={project.images[0].alt}
                             width={250}
@@ -209,6 +210,7 @@ const WorkPage = ({
                             {project.images && project.images.length > 0 && (
                               <div className="mt-3 rounded-lg overflow-hidden">
                                 <Image
+                                  loading="lazy"
                                   src={
                                     project.images[0].src || "/placeholder.svg"
                                   }

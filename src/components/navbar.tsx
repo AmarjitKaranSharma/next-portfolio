@@ -63,7 +63,13 @@ export default function NavigationBar({}: // changeTheme,
     <nav className="flex items-center justify-between h-[var(--navbar-height)] px-5 backdrop-blur-lg rounded-full bg-container-background max-w-5xl mx-auto">
       <section className="flex items-center gap-5">
         <div className="rounded-full w-14 overflow-hidden aspect-square grid place-items-center">
-          <Image src="/images/logo.png" alt="logo" width={150} height={150} />
+          <Image
+            loading="lazy"
+            src="/images/logo.png"
+            alt="logo"
+            width={150}
+            height={150}
+          />
         </div>
         <p className="text-xl">Hi, I am Amar.</p>
       </section>
