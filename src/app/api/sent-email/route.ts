@@ -1,6 +1,6 @@
 import { emailTemplate } from "@/components/template/email";
 import { NextRequest, NextResponse } from "next/server";
-import * as nodemailer from "nodemailer";
+import { createTransport } from "nodemailer";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
   try {
     const { name, message, email, phone } = await request.json();
 
-    const transporter = nodemailer.createTransport({
+    const transporter = createTransport({
       service: "gmail",
       auth: {
         user: process.env.GMAIL_USERNAME,
