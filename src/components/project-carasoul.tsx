@@ -75,7 +75,7 @@ export default function ProjectCarasoul() {
                   className="w-full h-full transition-transform duration-700 group-hover:scale-105"
                 />
                 <motion.button
-                  className="absolute bottom-6 right-6 z-50 bg-primary text-white p-3 rounded-full shadow-lg cursor-pointer group inline-flex justify-center items-center gap-2"
+                  className="absolute sm:bottom-6 sm:right-6 z-50 bg-primary text-white p-3 rounded-full shadow-lg cursor-pointer group inline-flex justify-center items-center gap-2 max-sm:scale-75 max-sm:bottom-3 max-sm:right-1"
                   onClick={() => router.push(`/work/${index + 1}`)}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
