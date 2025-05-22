@@ -60,7 +60,7 @@ export default function NavigationBar({}: // changeTheme,
   ];
 
   return (
-    <nav className="flex items-center justify-between h-[var(--navbar-height)] px-5 backdrop-blur-lg rounded-full bg-container-background max-w-5xl mx-auto">
+    <nav className="flex items-center justify-between h-[var(--navbar-height)] px-4 backdrop-blur-lg rounded-full bg-container-background max-w-5xl mx-auto">
       <section className="flex items-center gap-5">
         <div className="rounded-full w-14 overflow-hidden aspect-square grid place-items-center">
           <Image
