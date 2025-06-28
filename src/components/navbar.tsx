@@ -60,9 +60,9 @@ export default function NavigationBar({}: // changeTheme,
   ];
 
   return (
-    <nav className="flex items-center justify-between h-[var(--navbar-height)] px-4 backdrop-blur-lg rounded-full bg-container-background max-w-5xl mx-auto">
+    <nav className="flex items-center justify-between h-[var(--navbar-height)] px-4 backdrop-blur-sm">
       <section className="flex items-center gap-5">
-        <div className="rounded-full w-14 overflow-hidden aspect-square grid place-items-center">
+        {/* <div className="rounded-full w-14 overflow-hidden aspect-square grid place-items-center">
           <Image
             loading="lazy"
             src="/images/logo.png"
@@ -70,14 +70,14 @@ export default function NavigationBar({}: // changeTheme,
             width={150}
             height={150}
           />
-        </div>
-        <p className="text-xl">Hi, I am Amar.</p>
+        </div> */}
+        <p className="text-base font-bold">Amar</p>
       </section>
       <section className="flex items-center gap-8 px-5 max-sm:hidden">
         {menuItems.map((item) => (
           <Link
             key={item.label}
-            className={`text-lg font-medium ${
+            className={`text-base font-medium ${
               activeRoute == item.route
                 ? "text-active"
                 : activeRoute.includes(item.matchRoute!)

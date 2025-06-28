@@ -9,7 +9,9 @@ export default function ContactWithMe() {
   const ctaInView = useInView(ctaRef, { once: true, amount: 0.5 });
 
   return (
-    <section ref={ctaRef} className="py-20 md:py-32 px-4 text-center">
+    <section ref={ctaRef} className="py-20 md:pb-32 px-4 text-center relative">
+      <div className="glowing-container absolute inset-0 w-1/2 h-1/2"></div>
+
       <div className="max-w-3xl mx-auto">
         <motion.h2
           className="text-3xl md:text-5xl font-bold mb-6"
@@ -39,7 +41,7 @@ export default function ContactWithMe() {
         >
           <PulsingButton />
         </motion.div>
-
+        {/* 
         <motion.div
           className="flex justify-center gap-6 text-foreground"
           initial={{ opacity: 0, y: 20 }}
@@ -135,7 +137,7 @@ export default function ContactWithMe() {
             </svg>
             Whatsapp
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

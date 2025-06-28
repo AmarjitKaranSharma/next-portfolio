@@ -50,7 +50,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${ubuntu.variable} ${varela_round.variable} antialiased w-full px-[var(--main-screen-padding-horizontally)] py-[var(--main-screen-padding-vertically)] overflow-x-hidden`}
       >
-        <section className="sticky top-5 z-40 max-w-[1400px] mx-auto">
+        <section className="sticky top-0 z-40">
           <NavigationBar changeTheme={changeTheme} />
         </section>
         <section className="max-w-[1400px] mx-auto">{children}</section>
