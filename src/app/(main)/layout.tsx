@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import { Poppins, Ubuntu, Varela_Round } from "next/font/google";
 import ".././globals.css";
 import NavigationBar from "../../components/navbar";
@@ -47,6 +47,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head></head>
       <body
         className={`${poppins.variable} ${ubuntu.variable} ${varela_round.variable} antialiased w-full px-[var(--main-screen-padding-horizontally)] py-[var(--main-screen-padding-vertically)] overflow-x-hidden`}
       >

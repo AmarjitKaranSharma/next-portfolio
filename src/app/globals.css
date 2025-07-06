@@ -28,6 +28,7 @@
   --color-active: var(--active-color);
   --font-sans: var(--font-poppins);
   --font-ubuntu: var(--font-ubuntu);
+  --font-varela-round: var(--font-varela_round);
   --color-card-background: var(--card-background);
   --color-card-icon-background: var(--card-icon-background);
 }
