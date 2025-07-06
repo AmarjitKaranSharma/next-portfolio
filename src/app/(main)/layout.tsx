@@ -60,12 +60,14 @@ export default function RootLayout({
     <html lang="en">
       <head></head>
       <body
-        className={`${poppins.variable} ${ubuntu.variable} ${varela_round.variable} ${edu_qld.variable} antialiased w-full px-[var(--main-screen-padding-horizontally)] py-[var(--main-screen-padding-vertically)] overflow-x-hidden`}
+        className={`${poppins.variable} ${ubuntu.variable} ${varela_round.variable} ${edu_qld.variable} antialiased w-full overflow-x-hidden`}
       >
-        <section className="sticky top-0 z-40">
+        <section className="sticky top-0 z-[100] w-full">
           <NavigationBar changeTheme={changeTheme} />
         </section>
-        <section className="max-w-[1400px] mx-auto">{children}</section>
+        <section className="max-w-[1400px] mx-auto px-[var(--main-screen-padding-horizontally)]">
+          {children}
+        </section>
       </body>
     </html>
   );

@@ -62,17 +62,8 @@ export default function NavigationBar({}: // changeTheme,
   ];
 
   return (
-    <nav className="flex items-center justify-between h-[var(--navbar-height)] px-4 backdrop-blur-sm">
+    <nav className="flex items-center justify-between h-[var(--navbar-height)] px-10 backdrop-blur-sm bg-navbar-background/70">
       <section className="flex items-center gap-5">
-        {/* <div className="rounded-full w-14 overflow-hidden aspect-square grid place-items-center">
-          <Image
-            loading="lazy"
-            src="/images/logo.png"
-            alt="logo"
-            width={150}
-            height={150}
-          />
-        </div> */}
         <p className="text-xl font-bold font-edu-qld">Amar</p>
       </section>
       <section className="flex items-center gap-8 px-5 max-sm:hidden">
