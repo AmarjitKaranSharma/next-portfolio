@@ -37,7 +37,7 @@ export default function ProjectCarasoul() {
     });
   }, [api]);
   return (
-    <section ref={recentProject} className="mx-auto max-w-6xl space-y-10 py-20">
+    <section ref={recentProject} className="mx-auto max-w-6xl py-20 grid gap-10">
       <motion.h2
         className="text-3xl md:text-5xl font-bold text-center"
         initial={{ opacity: 0, y: 20 }}

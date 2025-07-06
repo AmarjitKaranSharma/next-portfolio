@@ -5,6 +5,7 @@
   --font-poppins: "Poppins";
   --font-ubuntu: "Ubuntu";
   --font-varela_round: "Varela Round";
+  --font-edu-qld: "Edu QLD Hand";
   --navbar-height: 3.75rem;
   --gap-navbar-content: 28px;
   --main-screen-padding-horizontally: 2.5rem;
@@ -29,6 +30,7 @@
   --font-sans: var(--font-poppins);
   --font-ubuntu: var(--font-ubuntu);
   --font-varela-round: var(--font-varela_round);
+  --font-edu-qld: var(--font-edu-qld);
   --color-card-background: var(--card-background);
   --color-card-icon-background: var(--card-icon-background);
 }

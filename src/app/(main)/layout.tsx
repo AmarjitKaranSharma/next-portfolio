@@ -1,5 +1,10 @@
-"use client"; 
-import { Poppins, Ubuntu, Varela_Round } from "next/font/google";
+"use client";
+import {
+  Edu_QLD_Beginner,
+  Poppins,
+  Ubuntu,
+  Varela_Round,
+} from "next/font/google";
 import ".././globals.css";
 import NavigationBar from "../../components/navbar";
 import { useEffect } from "react";
@@ -18,6 +23,12 @@ const varela_round = Varela_Round({
 
 const ubuntu = Ubuntu({
   variable: "--font-ubuntu",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const edu_qld = Edu_QLD_Beginner({
+  variable: "--font-edu-qld",
   subsets: ["latin"],
   weight: "400",
 });
@@ -49,7 +60,7 @@ export default function RootLayout({
     <html lang="en">
       <head></head>
       <body
-        className={`${poppins.variable} ${ubuntu.variable} ${varela_round.variable} antialiased w-full px-[var(--main-screen-padding-horizontally)] py-[var(--main-screen-padding-vertically)] overflow-x-hidden`}
+        className={`${poppins.variable} ${ubuntu.variable} ${varela_round.variable} ${edu_qld.variable} antialiased w-full px-[var(--main-screen-padding-horizontally)] py-[var(--main-screen-padding-vertically)] overflow-x-hidden`}
       >
         <section className="sticky top-0 z-40">
           <NavigationBar changeTheme={changeTheme} />

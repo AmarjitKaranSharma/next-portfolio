@@ -119,14 +119,14 @@ export default function Home() {
       {/* About Section */}
       <About></About>
 
+      {/* What I Do Section */}
+      <WhatIDo></WhatIDo>
+
       {/* Tech & Tools Section */}
       <TechShowcase></TechShowcase>
 
       {/* Project Carasoul */}
       <ProjectCarasoul></ProjectCarasoul>
-
-      {/* What I Do Section */}
-      <WhatIDo></WhatIDo>
 
       {/* Call to Action Section */}
       <ContactWithMe></ContactWithMe>

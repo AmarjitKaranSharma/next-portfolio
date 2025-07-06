@@ -14,7 +14,7 @@ export function TechShowcase() {
   return (
     <section
       ref={techRef}
-      className="w-full max-w-[1000px] mx-auto px-4 py-8 grid grid-cols-[min-content_auto] max-sm:grid-cols-1 gap-10 justify-between"
+      className="w-full max-w-[1000px] mx-auto px-4 py-20 grid grid-cols-1 place-items-center gap-10"
     >
       <motion.h2
         className="text-3xl md:text-5xl font-bold tracking-tighter max-sm:text-center"

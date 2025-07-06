@@ -6,7 +6,7 @@ export default function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
   const aboutRefInView = useInView(aboutRef, { once: true, amount: 0.3 });
   return (
-    <section ref={aboutRef} className="px-4 py-20">
+    <section ref={aboutRef} className="px-4 pt-20 pb-5">
       <motion.h2
         className="text-3xl md:text-5xl font-bold mb-12 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -34,7 +34,7 @@ export default function About() {
         </div>
         <div className="py-5">
           <motion.p
-            className="text-lg md:text-xl mb-8 text-center"
+            className="text-lg md:text-xl text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={
               aboutRefInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }

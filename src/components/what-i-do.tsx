@@ -32,10 +32,10 @@ export default function WhatIDo() {
   const whatIDoInView = useInView(whatIDoRef, { once: true, amount: 0.3 });
 
   return (
-    <section id="what-i-do" ref={whatIDoRef} className="px-4 py-20 md:py-32">
-      <div className="max-w-7xl mx-auto">
+    <section id="what-i-do" ref={whatIDoRef} className="px-4 py-20">
+      <div className="max-w-7xl mx-auto grid gap-10">
         <motion.h2
-          className="text-3xl md:text-5xl font-bold mb-16 text-center"
+          className="text-3xl md:text-5xl font-bold text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={whatIDoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}

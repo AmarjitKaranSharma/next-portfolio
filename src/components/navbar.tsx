@@ -1,6 +1,6 @@
 // app/components/navbar.tsx
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -10,11 +10,13 @@ import {
   DropdownMenuTrigger,
 } from "@/shadecn-lib/ui/dropdown-menu";
 import {
+  DownloadIcon,
   Menu,
   // Moon,
   // Sun
 } from "lucide-react";
 import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
+import { motion } from "framer-motion";
 
 export default function NavigationBar({}: // changeTheme,
 {
@@ -71,7 +73,7 @@ export default function NavigationBar({}: // changeTheme,
             height={150}
           />
         </div> */}
-        <p className="text-base font-bold">Amar</p>
+        <p className="text-xl font-bold font-edu-qld">Amar</p>
       </section>
       <section className="flex items-center gap-8 px-5 max-sm:hidden">
         {menuItems.map((item) => (
@@ -89,6 +91,15 @@ export default function NavigationBar({}: // changeTheme,
             {item.label}
           </Link>
         ))}
+        <motion.button
+          className="bg-primary text-white p-2 rounded-full shadow-lg cursor-pointer group inline-flex justify-center items-center gap-2 max-sm:scale-75 text-sm"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Toggle project menu"
+        >
+          <span className="ml-2">Download CV</span>
+          <DownloadIcon size={14} className={``} />
+        </motion.button>
         {/* <button
           onClick={() => {
             toggleTheme(theme === "dark" ? "light" : "dark");
@@ -110,7 +121,7 @@ export default function NavigationBar({}: // changeTheme,
                 onClick={() => {
                   toggleMenu();
                 }}
-                className={`text-md font-medium ${
+                className={`w-full text-md font-medium ${
                   activeRoute === item.route
                     ? "text-active"
                     : activeRoute.includes(item.matchRoute!)
@@ -123,19 +134,11 @@ export default function NavigationBar({}: // changeTheme,
               </Link>
             </DropdownMenuItem>
           ))}
-          {/* <DropdownMenuItem
+          <DropdownMenuItem
             className="flex gap-5 items-center capitalize text-md font-medium"
-            onClick={() => toggleTheme(theme === "dark" ? "light" : "dark")}
           >
-            <span>{theme === "dark" ? "light" : "dark"} Mode</span>
-            <span>
-              {theme === "dark" ? (
-                <Sun width={25}></Sun>
-              ) : (
-                <Moon width={25}></Moon>
-              )}
-            </span>
-          </DropdownMenuItem> */}
+            Download CV
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </nav>
