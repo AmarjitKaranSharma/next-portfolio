@@ -83,13 +83,19 @@ export default function NavigationBar({}: // changeTheme,
           </Link>
         ))}
         <motion.button
-          className="bg-primary text-white p-2 rounded-full shadow-lg cursor-pointer group inline-flex justify-center items-center gap-2 max-sm:scale-75 text-sm"
+          className="bg-primary text-white p-2 rounded-full shadow-lg cursor-pointer group max-sm:scale-75 text-sm"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Toggle project menu"
         >
-          <span className="ml-2">Download CV</span>
-          <DownloadIcon size={14} className={``} />
+          <a
+            className="inline-flex justify-center items-center gap-2"
+            href="/CV - Amarjit Karan Sharma.pdf"
+            download
+          >
+            <span className="ml-2">Download CV</span>
+            <DownloadIcon size={14} className={``} />
+          </a>
         </motion.button>
         {/* <button
           onClick={() => {
@@ -125,10 +131,14 @@ export default function NavigationBar({}: // changeTheme,
               </Link>
             </DropdownMenuItem>
           ))}
-          <DropdownMenuItem
-            className="flex gap-5 items-center capitalize text-md font-medium"
-          >
-            Download CV
+          <DropdownMenuItem className="flex gap-5 items-center capitalize text-md font-medium">
+            <a
+              className="inline-flex justify-center items-center gap-2"
+              href="/CV - Amarjit Karan Sharma.pdf"
+              download
+            >
+              Download CV
+            </a>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
