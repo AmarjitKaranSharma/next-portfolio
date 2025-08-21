@@ -21,7 +21,7 @@ export interface Technologies {
 
 export interface ProjectDetails {
   projectType: string;
-  duration: string;
+  status: string;
   role: string;
   keyFeatures: string[];
 }

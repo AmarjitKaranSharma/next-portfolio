@@ -106,15 +106,27 @@ export default function WorkDetail({ params }: PageProps) {
 
             <div className="flex flex-wrap gap-3 mb-8">
               {project.technologies.map((tech) => (
-                <span
+                <div
                   key={tech.name}
-                  className="px-4 py-2 rounded-full text-sm bg-background/50 backdrop-blur-sm border border-foreground/20 hover:border-primary/50 transition-colors"
+                  className="px-4 py-2 rounded-full text-sm bg-background/50 backdrop-blur-sm border border-foreground/20 hover:border-primary/50 transition-colors flex items-center gap-2"
                   style={{
                     boxShadow: `0 0 20px ${project.color}20`,
                   }}
                 >
+                  <Image
+                    loading="lazy"
+                    src={tech.icon || "/placeholder.svg"}
+                    alt={tech.name}
+                    width={200}
+                    height={200}
+                    className="w-4 transition-transform duration-700 group-hover:scale-105"
+                    style={{
+                      filter:
+                        "brightness(0) saturate(100%) invert(99%) sepia(4%) saturate(470%) hue-rotate(185deg) brightness(123%) contrast(100%)",
+                    }}
+                  />
                   {tech.name}
-                </span>
+                </div>
               ))}
             </div>
 
@@ -129,7 +141,7 @@ export default function WorkDetail({ params }: PageProps) {
                 View Project
               </Link>
 
-              <Link
+              {/* <Link
                 href="#"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -137,7 +149,7 @@ export default function WorkDetail({ params }: PageProps) {
               >
                 <Github size={18} />
                 Source Code
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         </div>
@@ -167,8 +179,8 @@ export default function WorkDetail({ params }: PageProps) {
               </div>
 
               <div>
-                <h3 className="text-sm text-foreground/60 mb-2">DURATION</h3>
-                <p className="font-medium">{project.details.duration}</p>
+                <h3 className="text-sm text-foreground/60 mb-2">Status</h3>
+                <p className="font-medium">{project.details.status}</p>
               </div>
 
               <div>
