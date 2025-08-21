@@ -58,7 +58,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head></head>
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Amarjit Karan Sharma - Portfolio</title>
+      </head>
       <body
         className={`${poppins.variable} ${ubuntu.variable} ${varela_round.variable} ${edu_qld.variable} antialiased w-full overflow-x-hidden`}
       >
